@@ -15,6 +15,9 @@
  * Move it to its right position.
  * Repeat until the list is sorted.
  * Works well for learning, but is slow for very big lists.
+ * 
+ * 
+ * Time complexity: O(n^2)
  */
 
 var sortArray = function (nums) {
@@ -28,7 +31,6 @@ var sortArray = function (nums) {
     let swapItem = nums[i];
     nums[i] = nums[minIndex];
     nums[minIndex] = swapItem;
-    console.log(nums);
   }
   return nums;
 };
