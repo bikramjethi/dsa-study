@@ -1,4 +1,6 @@
 /**
+ * Time complexity: O(n^2)
+ * 
  * Easiest of the sorting algos:
  * Suppose the list is [64, 25, 12, 22, 11]:
  * 
@@ -16,8 +18,6 @@
  * Repeat until the list is sorted.
  * Works well for learning, but is slow for very big lists.
  * 
- * 
- * Time complexity: O(n^2)
  */
 
 var sortArray = function (nums) {
