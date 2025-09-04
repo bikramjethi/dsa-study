@@ -1,5 +1,7 @@
 /**
  * MERGE SORT - Divide and merge algorithm
+ * Time complexity: O(n log2(n))
+ * Space complexity: O(n)
  * 
  * pseudocode
  * 
@@ -44,8 +46,6 @@
         arr[i] = temp[i - low];
     }
  }
-
-
  * 
  */
 
