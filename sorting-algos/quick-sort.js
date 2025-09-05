@@ -1,44 +1,33 @@
-/**
- * 2 RULES
- * 1. pick a pivot -> place it at it's right index, as if the array was sorted
- * 2. smaller on the left, larger on the right
- *
- * Pseudocode:
- *
- */
-
-function partition(arr, low, high) {
+function partition3way(arr, low, high) {
+  // Randomize pivot
+  const pivotIdx = Math.floor(Math.random() * (high - low + 1)) + low;
+  [arr[low], arr[pivotIdx]] = [arr[pivotIdx], arr[low]];
   let pivot = arr[low];
-  let i = low;
-  let j = high;
+  let lt = low,
+    i = low + 1,
+    gt = high;
 
-  while (i < j) {
-    while (arr[i] <= pivot && i <= high - 1) {
+  while (i <= gt) {
+    if (arr[i] < pivot) {
+      [arr[lt], arr[i]] = [arr[i], arr[lt]];
+      lt++;
+      i++;
+    } else if (arr[i] > pivot) {
+      [arr[i], arr[gt]] = [arr[gt], arr[i]];
+      gt--;
+    } else {
       i++;
     }
-
-    while (arr[j] > pivot && j >= low + 1) {
-      j--;
-    }
-
-    if (i < j) {
-      const temp = arr[i];
-      arr[i] = arr[j];
-      arr[j] = temp;
-    }
   }
-
-  arr[low] = arr[j];
-  arr[j] = pivot;
-
-  return j;
+  // Returns the bounds of the equal-to-pivot section
+  return [lt, gt];
 }
 
 function quickSort(arr, low, high) {
   if (low < high) {
-    let pIndex = partition(arr, low, high);
-    quickSort(arr, low, pIndex - 1);
-    quickSort(arr, pIndex + 1, high);
+    const [lt, gt] = partition3way(arr, low, high);
+    quickSort(arr, low, lt - 1);
+    quickSort(arr, gt + 1, high);
   }
 }
 
