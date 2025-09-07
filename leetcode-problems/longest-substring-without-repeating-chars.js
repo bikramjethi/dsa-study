@@ -1,4 +1,6 @@
 /** 
+ * SLIDING WINDOW PATTERN
+ * 
  * 3. Longest Substring Without Repeating Characters
 Medium
 Topics
@@ -39,26 +41,18 @@ s consists of English letters, digits, symbols and spaces.
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-  let longString = "";
-  let stringMap = {};
-  let stringPointer = 0;
+  let maxLen = 0;
+  let left = 0;
+  const charIndex = {};
 
-  while (stringPointer < s.length) {
-    let currentString = "";
-    for (let i = stringPointer; i <= s.length - 1; i++) {
-      let currentChar = s[i];
-      if (stringMap[currentChar]) {
-        if (longString.length < currentString.length) {
-          longString = currentString;
-        }
-        stringMap = {};
-        break;
-      } else {
-        currentString += currentChar;
-        stringMap[currentChar] = true;
-      }
+  for (let right = 0; right < s.length; right++) {
+    const char = s[right];
+    if (char in charIndex && charIndex[char] >= left) {
+      left = charIndex[char] + 1;
     }
-    stringPointer++;
+    charIndex[char] = right;
+    maxLen = Math.max(maxLen, right - left + 1);
   }
-  return longString.length;
+
+  return maxLen;
 };
