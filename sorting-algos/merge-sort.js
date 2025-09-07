@@ -23,23 +23,23 @@
     tempArray = [];
 
     While(left<=mid and right<=high) {
-        if(left<=right) {
-            tempArray.push(left);
+        if(arr[left]<=arr[right]) {
+            tempArray.push(arr[left]);
             left++;
         } else {
-            tempArray.push(right);
+            tempArray.push(arr[right]);
             right++;  
         }
     }
 
     while(left<=mid) {
-        tempArray.push(left);
+        tempArray.push(arr[left]);
         left++;   
     }
 
     while(right<=high) {
-        tempArray.push(left);
-        left++;  
+        tempArray.push(arr[right]);
+        right++;  
     }
 
     for(i = low; i <= high; i++) {
