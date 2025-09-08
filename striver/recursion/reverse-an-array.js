@@ -11,6 +11,8 @@
    Input: n=6, arr = [1,2,1,1,5,1]
    Output: [1,5,1,1,2,1]
    Explanation: The reverse of the array [1,2,1,1,5,1] is [1,5,1,1,2,1].
+
+   Leetcode link: https://leetcode.com/problems/reverse-string/
  * 
  */
 
