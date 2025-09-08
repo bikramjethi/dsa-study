@@ -14,10 +14,50 @@
  * 
  */
 
+/**
+ * Reverse an array - Using 2 pointers and recursion
+ */
 
+function reverse(s, left, right) {
+  if (left >= right) {
+    return;
+  }
+
+  const temp = s[left];
+  s[left] = s[right];
+  s[right] = temp;
+
+  reverse(s, left + 1, right - 1);
+}
+/**
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function (s) {
+  reverse(s, 0, s.length - 1);
+};
 
 /**
- * Reverse an array - Using 2 pointers
+ * @param {character[]} s
+ * @return {void} Do not return anything, modify s in-place instead.
+ */
+var reverseString = function (s) {
+  let left = 0;
+  let right = s.length - 1;
+
+  while (left < right) {
+    const temp = s[left];
+    s[left] = s[right];
+    s[right] = temp;
+    left++;
+    right--;
+  }
+
+  return s;
+};
+
+/**
+ * Reverse an array - Using 2 pointers and no recursion
  */
 
 /**
@@ -25,16 +65,16 @@
  * @return {void} Do not return anything, modify s in-place instead.
  */
 var reverseString = function (s) {
-    let left = 0;
-    let right = s.length - 1;
+  let left = 0;
+  let right = s.length - 1;
 
-    while (left < right) {
-        const temp = s[left];
-        s[left] = s[right];
-        s[right] = temp;
-        left++;
-        right--;
-    }
+  while (left < right) {
+    const temp = s[left];
+    s[left] = s[right];
+    s[right] = temp;
+    left++;
+    right--;
+  }
 
-    return s;
+  return s;
 };
